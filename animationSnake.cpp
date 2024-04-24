@@ -160,8 +160,11 @@ bool AnimationSnake::gameOver(){
     }
     for (int i = 2; i < snakes.size(); i++){
         if (snakes.at(i).getPosition().x == snakes.at(0).getPosition().x && 
-        snakes.at(i).getPosition().y == snakes.at(0).getPosition().y)
+        snakes.at(i).getPosition().y == snakes.at(0).getPosition().y){
+            gameOverTxt.setVisible(true);
+            restartBtn.setVisible(true);
             return true;
+        }
     }
     return false;
 }
@@ -189,13 +192,13 @@ bool AnimationSnake::validApple(TDT4102::Point posA){
     for (int j = 0; j < snakes.size(); j++){
         int xPos = snakes.at(j).getPosition().x / blockSize;
         int yPos = snakes.at(j).getPosition().y / blockSize;
-        if(xPos == posA.x && xPos == posA.y){
+        if(xPos == posA.x && yPos == posA.y){
             like += 1;
             break;
         }
     }
     for (int k = 0; k < apples.size(); k++){
-        if(apples.at(k).getGridPos().x == posA.x &&  apples.at(k).getGridPos().x== posA.y){
+        if(apples.at(k).getGridPos().x == posA.x &&  apples.at(k).getGridPos().y == posA.y){
             like += 1;
             break;
         }
